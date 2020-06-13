@@ -15,7 +15,22 @@
     "skipLibCheck": true,
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
-    "paths": {}
+    "paths": {
+      "@angular-xstate-nx-realworld-example-app/angular-xstate": [
+        "libs/angular-xstate/src/index.ts"
+      ],
+      "@angular-xstate-nx-realworld-example-app/api": ["libs/api/src/index.ts"],
+      "@angular-xstate-nx-realworld-example-app/auth": [
+        "libs/auth/src/index.ts"
+      ],
+      "@angular-xstate-nx-realworld-example-app/shared": [
+        "libs/shared/src/index.ts"
+      ],
+      "@env/*": ["apps/conduit/src/environments/*"],
+      "@angular-xstate-nx-realworld-example-app/home": [
+        "libs/home/src/index.ts"
+      ]
+    }
   },
   "exclude": ["node_modules", "tmp"]
 }

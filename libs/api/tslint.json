@@ -1,0 +1,20 @@
+{
+  "extends": "../../tslint.json",
+  "rules": {
+    "directive-selector": [
+      true,
+      "attribute",
+      "angularXstateNxRealworldExampleApp",
+      "camelCase"
+    ],
+    "component-selector": [
+      true,
+      "element",
+      "angular-xstate-nx-realworld-example-app",
+      "kebab-case"
+    ]
+  },
+  "linterOptions": {
+    "exclude": ["!**/*"]
+  }
+}

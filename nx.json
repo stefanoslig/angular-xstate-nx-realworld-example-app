@@ -25,6 +25,24 @@
     "conduit-e2e": {
       "tags": [],
       "implicitDependencies": ["conduit"]
+    },
+    "angular-xstate": {
+      "tags": []
+    },
+    "api": {
+      "tags": []
+    },
+    "authentication": {
+      "tags": []
+    },
+    "auth": {
+      "tags": []
+    },
+    "shared": {
+      "tags": []
+    },
+    "home": {
+      "tags": []
     }
   }
 }
