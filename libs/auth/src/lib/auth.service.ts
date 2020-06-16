@@ -1,7 +1,13 @@
-import { ApiService, UserResponse } from '@angular-ngrx-nx-realworld-example-app/api';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { LoginUser, LoginUserRequest, NewUserRequest, NewUser } from './auth.interfaces';
+import {
+  LoginUser,
+  LoginUserRequest,
+  NewUserRequest,
+  NewUser,
+} from './auth.interfaces';
+import { ApiService } from '@angular-xstate-nx-realworld-example-app/api';
+import { UserResponse } from '@angular-xstate-nx-realworld-example-app/shared';
 
 @Injectable()
 export class AuthService {
@@ -12,10 +18,15 @@ export class AuthService {
   }
 
   login(credentials: LoginUser): Observable<UserResponse> {
-    return this.apiService.post<UserResponse, LoginUserRequest>('/users/login', { user: credentials });
+    return this.apiService.post<UserResponse, LoginUserRequest>(
+      '/users/login',
+      { user: credentials }
+    );
   }
 
   register(credentials: NewUser): Observable<UserResponse> {
-    return this.apiService.post<UserResponse, NewUserRequest>('/users', { user: credentials });
+    return this.apiService.post<UserResponse, NewUserRequest>('/users', {
+      user: credentials,
+    });
   }
 }

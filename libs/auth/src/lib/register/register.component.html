@@ -2,15 +2,27 @@
   <div class="container page">
     <div class="row">
       <div class="col-md-6 offset-md-3 col-xs-12">
-        <h1 class="text-xs-center">Login</h1>
+        <h1 class="text-xs-center">Sign in</h1>
         <p class="text-xs-center">
-          <a [routerLink]="['/register']">Need an account?</a>
+          <a [routerLink]="['/login']">Have an account?</a>
         </p>
-        <form [formGroup]="loginForm" (ngSubmit)="submitForm()">
+
+        <form [formGroup]="registerForm" (ngSubmit)="submitForm()">
           <fieldset>
             <fieldset class="form-group">
               <input
                 autoFocus
+                formControlName="username"
+                placeholder="Username"
+                class="form-control form-control-lg"
+                type="text"
+              />
+              <div *ngIf="usernameCtr.dirty && usernameCtr.errors?.required">
+                Username is required
+              </div>
+            </fieldset>
+            <fieldset class="form-group">
+              <input
                 formControlName="email"
                 placeholder="Email"
                 class="form-control form-control-lg"
@@ -38,10 +50,10 @@
               class="btn btn-lg btn-primary pull-xs-right"
               type="submit"
               [disabled]="
-                emailCtr.invalid || passwordCtr.invalid || (isSignIn$ | async)
+                emailCtr.invalid || passwordCtr.invalid || (isSignUp$ | async)
               "
             >
-              login
+              Register
             </button>
           </fieldset>
         </form>

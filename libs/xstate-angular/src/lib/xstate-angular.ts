@@ -8,10 +8,10 @@ import {
   Interpreter,
   StateMachine,
   Typestate,
-  StateSchema
+  StateSchema,
 } from 'xstate';
-import { filter, shareReplay, finalize } from 'rxjs/operators';
-import { Observable, from } from 'rxjs';
+import { filter, shareReplay, finalize, tap } from 'rxjs/operators';
+import { Observable, from, BehaviorSubject, Subject } from 'rxjs';
 
 export type InterpretedService<
   TContext,
@@ -54,6 +54,7 @@ export function useMachine<
     activities,
     services,
     delays,
+    persist,
     state: rehydratedState,
     ...interpreterOptions
   } = options;
@@ -64,17 +65,33 @@ export function useMachine<
     actions,
     activities,
     services,
-    delays
+    delays,
   };
 
   const createdMachine = machine.withConfig(machineConfig, {
     ...machine.context,
-    ...context
+    ...context,
   } as TContext);
 
   const service = interpret(createdMachine, interpreterOptions).start(
     rehydratedState ? State.create(rehydratedState) : undefined
   );
+
+  if (!!persist && persist.key) {
+    const state$ = from(service).pipe(
+      filter(({ changed }) => changed),
+      tap((_) =>
+        service.onTransition((state) => {
+          if (state.changed) {
+            localStorage.setItem(persist.key, JSON.stringify(state));
+          }
+        })
+      ),
+      shareReplay(1),
+      finalize(service.stop)
+    );
+    return { state$, send: service.send, service };
+  }
 
   const state$ = from(service).pipe(
     filter(({ changed }) => changed),

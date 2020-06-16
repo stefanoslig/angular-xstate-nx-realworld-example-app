@@ -16,8 +16,8 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
-      "@angular-xstate-nx-realworld-example-app/angular-xstate": [
-        "libs/angular-xstate/src/index.ts"
+      "@angular-xstate-nx-realworld-example-app/xstate-angular": [
+        "libs/xstate-angular/src/index.ts"
       ],
       "@angular-xstate-nx-realworld-example-app/api": ["libs/api/src/index.ts"],
       "@angular-xstate-nx-realworld-example-app/auth": [
@@ -29,6 +29,9 @@
       "@env/*": ["apps/conduit/src/environments/*"],
       "@angular-xstate-nx-realworld-example-app/home": [
         "libs/home/src/index.ts"
+      ],
+      "@angular-xstate-nx-realworld-example-app/graph": [
+        "libs/graph/src/index.ts"
       ]
     }
   },

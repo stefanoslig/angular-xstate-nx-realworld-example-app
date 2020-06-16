@@ -1,7 +1,7 @@
 module.exports = {
-  name: 'angular-xstate',
+  name: 'graph',
   preset: '../../jest.config.js',
-  coverageDirectory: '../../coverage/libs/angular-xstate',
+  coverageDirectory: '../../coverage/libs/graph',
   snapshotSerializers: [
     'jest-preset-angular/build/AngularNoNgAttributesSnapshotSerializer.js',
     'jest-preset-angular/build/AngularSnapshotSerializer.js',
