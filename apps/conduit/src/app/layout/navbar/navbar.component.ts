@@ -1,4 +1,11 @@
-import { Component, Input, ChangeDetectionStrategy } from '@angular/core';
+import {
+  Component,
+  Input,
+  ChangeDetectionStrategy,
+  Output,
+  EventEmitter,
+} from '@angular/core';
+import { User } from '@angular-xstate-nx-realworld-example-app/shared';
 
 @Component({
   selector: 'conduit-navbar',
@@ -7,6 +14,11 @@ import { Component, Input, ChangeDetectionStrategy } from '@angular/core';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class NavbarComponent {
-  @Input() user;
+  @Input() user: User;
   @Input() isLoggedIn: boolean;
+  @Output() onLogout = new EventEmitter();
+
+  logout() {
+    this.onLogout.emit();
+  }
 }

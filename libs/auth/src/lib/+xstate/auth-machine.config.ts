@@ -72,31 +72,41 @@ export class AuthMachineService {
           entry: ['goToHomePage', 'assignUser'],
           on: {
             UPDATE_USER: 'updating',
-            LOGOUT: 'logout',
+            LOGOUT: { target: 'unauthorized', actions: 'logout' },
           },
         },
         updating: {},
-        logout: {},
       },
     },
     {
       actions: {
-        resetUser: assign<AuthMachineContext, SignInSuccess>(() => ({
+        resetUser: assign<AuthMachineContext, AuthMachineEvent>(() => ({
           user: initialContext.user,
         })),
-        resetErrors: assign<AuthMachineContext, SignInSuccess>(() => ({
+        resetErrors: assign<AuthMachineContext, AuthMachineEvent>(() => ({
           errors: initialContext.errors,
         })),
         goToHomePage: (ctx: AuthMachineContext, event: AuthMachineEvent) =>
           this.router.navigateByUrl(''),
-        assignUser: assign<AuthMachineContext, SignInSuccess>((ctx, event) => ({
-          user: event.response.user,
-        })),
-        assignErrors: assign<AuthMachineContext, SignInFail>((_, event) => ({
-          errors: Object.keys(event.errors || {}).map(
-            (key) => `${key} ${event.errors[key]}`
-          ),
-        })),
+        assignUser: assign<AuthMachineContext, AuthMachineEvent>(
+          (ctx, event) => ({
+            user: (event as SignInSuccess).response.user,
+          })
+        ),
+        assignErrors: assign<AuthMachineContext, AuthMachineEvent>(
+          (_, event) => {
+            const eventErrors = (event as SignInFail).errors;
+            return {
+              errors: Object.keys(eventErrors || {}).map(
+                (key) => `${key} ${eventErrors[key]}`
+              ),
+            };
+          }
+        ),
+        logout: () => {
+          localStorage.setItem('authState', null);
+          this.router.navigateByUrl('login');
+        },
       },
       services: {
         signIn: (_, event: SignIn) =>
@@ -121,7 +131,11 @@ export class AuthMachineService {
     }
   );
 
+  rehydratedState = JSON.parse(localStorage.getItem('authState'));
+
   authMachine = useMachine(this.ɵauthMachine, {
     devTools: !environment.production,
+    state: this.rehydratedState,
+    persist: { key: 'authState' },
   });
 }

@@ -6,7 +6,6 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { AuthGuardService } from './auth-guard.service';
 import { LoginComponent } from './login/login.component';
 import { SharedModule } from '@angular-xstate-nx-realworld-example-app/shared';
-import { AuthMachineFacade } from './+xstate/auth-machine.facade';
 import { AuthService } from './auth.service';
 import { RegisterComponent } from './register/register.component';
 
@@ -25,7 +24,6 @@ const authRouting = RouterModule.forChild([
   imports: [CommonModule, ReactiveFormsModule, authRouting, SharedModule],
   providers: [
     AuthGuardService,
-    AuthMachineFacade,
     AuthService,
     //TokenInterceptorService,
     // {

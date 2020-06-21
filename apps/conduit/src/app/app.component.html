@@ -1,2 +1,7 @@
+<conduit-navbar
+  [isLoggedIn]="isAauthorized$ | async"
+  [user]="user$ | async"
+  (onLogout)="logout()"
+></conduit-navbar>
 <router-outlet></router-outlet>
 <conduit-footer></conduit-footer>

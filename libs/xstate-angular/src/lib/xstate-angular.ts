@@ -55,7 +55,7 @@ export function useMachine<
     services,
     delays,
     persist,
-    state: rehydratedState,
+    state,
     ...interpreterOptions
   } = options;
 
@@ -74,21 +74,13 @@ export function useMachine<
   } as TContext);
 
   const service = interpret(createdMachine, interpreterOptions).start(
-    rehydratedState ? State.create(rehydratedState) : undefined
+    state ? State.create(state) : undefined
   );
 
   if (!!persist && persist.key) {
     const state$ = from(service).pipe(
-      filter(({ changed }) => changed),
-      tap((_) =>
-        service.onTransition((state) => {
-          if (state.changed) {
-            localStorage.setItem(persist.key, JSON.stringify(state));
-          }
-        })
-      ),
-      shareReplay(1),
-      finalize(service.stop)
+      tap((state) => localStorage.setItem(persist.key, JSON.stringify(state))),
+      shareReplay(1)
     );
     return { state$, send: service.send, service };
   }

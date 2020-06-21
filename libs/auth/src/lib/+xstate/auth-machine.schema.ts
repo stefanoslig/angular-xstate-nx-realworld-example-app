@@ -7,7 +7,6 @@ export interface AuthMachineSchema {
     signin: {};
     signup: {};
     updating: {};
-    logout: {};
   };
 }
 

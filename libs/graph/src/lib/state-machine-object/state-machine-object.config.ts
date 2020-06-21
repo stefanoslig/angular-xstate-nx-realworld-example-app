@@ -20,37 +20,25 @@ export class AuthMachineServiceObject {
     match: isAmatch('unauthorized'),
   });
 
-  authMachine(state: string, event: { type: string }): string {
-    if (state === 'unauthorized') {
-      if (event.type === 'SIGNIN') {
-        return 'signin';
-      }
-      if (event.type === 'SIGNUP') {
-        return 'signup';
-      }
-    } else if (state === 'authorized') {
-      if (event.type === 'LOGOUT') {
-        return 'unauthorized';
-      }
-    } else if (state === 'signin') {
-      if (event.type === 'SIGNIN_SUCCESS') {
-        return 'authorized';
-      }
-      if (event.type === 'SIGNIN_FAILURE') {
-        return 'unauthorized';
-      }
-    } else if (state === 'signup') {
-      if (event.type === 'SIGNUP_SUCCESS') {
-        return 'authorized';
-      }
-      if (event.type === 'SIGNUP_FAILURE') {
-        return 'unauthorized';
-      }
-    }
-  }
+  authMachine = {
+    states: {
+      unauthorized: {
+        on: { SIGNIN: 'signin', SIGNUP: 'signup' },
+      },
+      authorized: {
+        on: { LOGOUT: 'unauthorized' },
+      },
+      signin: {
+        on: { SIGNIN_SUCCESS: 'authorized', SIGNIN_FAILURE: 'unauthorized' },
+      },
+      signup: {
+        on: { SIGNUP_SUCCESS: 'authorized', SIGNUP_FAILURE: 'unauthorized' },
+      },
+    },
+  };
 
   transition(state: string, event: { type: string }) {
-    const nextState = this.authMachine(state, event);
+    const nextState = this.authMachine[state].on[event];
     this.state$.next({
       value: nextState,
       previous_value: state,
