@@ -35,6 +35,10 @@
             </li>
           </ul>
         </div>
+        <app-article-list
+          [type]="(activeTabAll$ | async) ? 'all' : 'feed'"
+          [tag]="selectedTag$ | async"
+        ></app-article-list>
       </div>
 
       <div class="col-md-3">

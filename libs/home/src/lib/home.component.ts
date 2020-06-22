@@ -13,6 +13,7 @@ export class HomeComponent {
   activeTabTag$ = this.homeMachineFacade.activeTabTag$;
   activeTagName$ = this.homeMachineFacade.activeTagName$;
   tags$ = this.homeMachineFacade.tags$;
+  selectedTag$ = this.homeMachineFacade.selectedTag$;
 
   constructor(private homeMachineFacade: HomeMachineFacade) {}
 

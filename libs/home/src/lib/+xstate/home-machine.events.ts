@@ -1,3 +1,5 @@
+import { ArticleListMachineEvent } from 'libs/article-list/src/lib/+xstate/article-list-machine.events';
+
 export class ActivateFeedTab {
   readonly type = 'ACTIVATE_FEED_TAB';
 }
@@ -36,4 +38,5 @@ export type HomeMachineEvent =
   | IsAnauthorizedCheck
   | IsAnauthorized
   | IsAuthorized
-  | GetTagsSuccess;
+  | GetTagsSuccess
+  | ArticleListMachineEvent;

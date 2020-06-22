@@ -28,8 +28,13 @@ export class HomeMachineFacade {
   tags$: Observable<string[]> = this.state$.pipe(
     map((state) => state.context.tags)
   );
+  selectedTag$: Observable<string> = this.state$.pipe(
+    map((state) => state.context.selectedTag)
+  );
 
-  constructor(private homeMachineService: HomeMachineService) {}
+  constructor(private homeMachineService: HomeMachineService) {
+    homeMachineService.homeMachine.state$.subscribe((s) => console.log(s));
+  }
 
   activateFeedTab() {
     this.send(new ActivateFeedTab());
