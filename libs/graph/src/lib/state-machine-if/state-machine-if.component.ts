@@ -9,7 +9,13 @@ import { links, nodes } from '../data';
 
 @Component({
   selector: 'app-state-machine-if',
-  templateUrl: './state-machine-if.component.html',
+  template: `
+    <app-visualizer
+      [nodes]="nodes"
+      [links]="links"
+      (event)="onEvent($event)"
+    ></app-visualizer>
+  `,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class StateMachineIfComponent implements OnInit, OnDestroy {

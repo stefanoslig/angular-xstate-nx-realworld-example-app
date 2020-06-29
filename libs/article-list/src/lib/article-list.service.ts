@@ -14,7 +14,7 @@ export class ArticleListService {
     config: ArticleListConfig
   ): Observable<{ articles: Article[]; articlesCount: number }> {
     return this.apiService.get(
-      '/articles' + (type === 'feed' ? '/feed' : ''),
+      '/articles' + (type === 'feed' && !config.filters?.tag ? '/feed' : ''),
       this.toHttpParams(config.filters)
     );
   }

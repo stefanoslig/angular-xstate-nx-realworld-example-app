@@ -46,15 +46,15 @@ export class HomeMachineService {
             IS_AUTHORIZED: { target: 'feed' },
           },
         },
-        all: {},
-        feed: {},
+        all: { entry: 'resetTag' },
+        feed: { entry: 'resetTag' },
         tag: {},
       },
       on: {
         GET_TAGS_SUCCESS: { actions: 'assignTags' },
         ACTIVATE_FEED_TAB: { target: 'checking' },
         ACTIVATE_ALL_TAB: { target: 'all' },
-        ACTIVATE_TAG_TAB: { target: 'tag', actions: 'assignTag' },
+        ACTIVATE_TAG_TAB: { target: 'tag', actions: ['assignTag'] },
       },
     },
     {
@@ -77,6 +77,9 @@ export class HomeMachineService {
         })),
         assignTag: assign((_, event: HomeMachineEvent) => ({
           selectedTag: (event as ActivateTagTab).tag,
+        })),
+        resetTag: assign((_, event) => ({
+          selectedTag: null,
         })),
       },
     }

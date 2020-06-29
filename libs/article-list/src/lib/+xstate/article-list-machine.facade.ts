@@ -14,8 +14,8 @@ export class ArticleListMachineFacade {
   );
   constructor(private articleListMachineService: ArticleListMachineService) {}
 
-  loadArticles(type: string, tag?: string) {
-    this.send(new GetArticles(type, tag));
+  loadArticles(tabType: string, tag: string) {
+    this.send(new GetArticles({ tabType, tag }));
   }
   favorite(slug: string) {}
   unFavorite(slug: string) {}

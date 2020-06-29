@@ -8,6 +8,8 @@ import { LoginComponent } from './login/login.component';
 import { SharedModule } from '@angular-xstate-nx-realworld-example-app/shared';
 import { AuthService } from './auth.service';
 import { RegisterComponent } from './register/register.component';
+import { TokenInterceptorService } from './token-interceptor.service';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
 
 const authRouting = RouterModule.forChild([
   {
@@ -25,12 +27,12 @@ const authRouting = RouterModule.forChild([
   providers: [
     AuthGuardService,
     AuthService,
-    //TokenInterceptorService,
-    // {
-    //   provide: HTTP_INTERCEPTORS,
-    //   useClass: TokenInterceptorService,
-    //   multi: true,
-    // },
+    TokenInterceptorService,
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: TokenInterceptorService,
+      multi: true,
+    },
   ],
   declarations: [LoginComponent, RegisterComponent],
 })

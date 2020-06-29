@@ -23,16 +23,27 @@ export class AuthMachineServiceObject {
   authMachine = {
     states: {
       unauthorized: {
-        on: { SIGNIN: 'signin', SIGNUP: 'signup' },
+        on: {
+          SIGNIN: 'signin',
+          SIGNUP: 'signup',
+        },
       },
       authorized: {
-        on: { LOGOUT: 'unauthorized' },
+        on: {
+          LOGOUT: 'unauthorized',
+        },
       },
       signin: {
-        on: { SIGNIN_SUCCESS: 'authorized', SIGNIN_FAILURE: 'unauthorized' },
+        on: {
+          SIGNIN_SUCCESS: 'authorized',
+          SIGNIN_FAILURE: 'unauthorized',
+        },
       },
       signup: {
-        on: { SIGNUP_SUCCESS: 'authorized', SIGNUP_FAILURE: 'unauthorized' },
+        on: {
+          SIGNUP_SUCCESS: 'authorized',
+          SIGNUP_FAILURE: 'unauthorized',
+        },
       },
     },
   };

@@ -2,7 +2,7 @@ import { Article } from '@angular-xstate-nx-realworld-example-app/shared';
 
 export class GetArticles {
   readonly type = 'FETCH';
-  constructor(public tabType: string, tag?: string) {}
+  constructor(public payload: { tabType: string; tag?: string }) {}
 }
 export class GetArticlesSuccess {
   readonly type = 'FETCH_ARTICLES_SUCCESS';

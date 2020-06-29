@@ -10,6 +10,7 @@ import {
   ArticleListMachineEvent,
   GetArticlesFail,
   GetArticlesSuccess,
+  GetArticles,
 } from './article-list-machine.events';
 import { ArticleListService } from '../article-list.service';
 import { map, catchError } from 'rxjs/operators';
@@ -86,15 +87,20 @@ export class ArticleListMachineService {
     },
     {
       services: {
-        getArticles: (context, event) => {
+        getArticles: (context, event: GetArticles) => {
           const config = {
             ...context.config,
-            filters: { ...context.config.filters, tag: event.tag },
+            filters: {
+              ...context.config.filters,
+              tag: event.payload?.tag ?? '',
+            },
           };
-          return this.articleListService.query(event.tabType, config).pipe(
-            map((result) => new GetArticlesSuccess(result.articles)),
-            catchError((result) => of(new GetArticlesFail(result)))
-          );
+          return this.articleListService
+            .query(event.payload.tabType, config)
+            .pipe(
+              map((result) => new GetArticlesSuccess(result.articles)),
+              catchError((result) => of(new GetArticlesFail(result)))
+            );
         },
         favoriteArticle: () => null,
         unfavoriteArticle: () => null,
