@@ -3,9 +3,5 @@
   "compilerOptions": {
     "types": ["node", "jest"]
   },
-  "include": [
-    "**/*.ts",
-    "../graph/src/lib/auth-machine-object.config.ts",
-    "../graph/src/lib/state-machine-if/state-machine-if.config.ts"
-  ]
+  "include": ["**/*.ts"]
 }

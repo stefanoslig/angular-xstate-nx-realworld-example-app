@@ -284,38 +284,6 @@
         }
       }
     },
-    "graph": {
-      "projectType": "library",
-      "root": "libs/graph",
-      "sourceRoot": "libs/graph/src",
-      "prefix": "angular-xstate-nx-realworld-example-app",
-      "architect": {
-        "lint": {
-          "builder": "@angular-devkit/build-angular:tslint",
-          "options": {
-            "tsConfig": [
-              "libs/graph/tsconfig.lib.json",
-              "libs/graph/tsconfig.spec.json"
-            ],
-            "exclude": ["**/node_modules/**", "!libs/graph/**/*"]
-          }
-        },
-        "test": {
-          "builder": "@nrwl/jest:jest",
-          "options": {
-            "jestConfig": "libs/graph/jest.config.js",
-            "tsConfig": "libs/graph/tsconfig.spec.json",
-            "passWithNoTests": true,
-            "setupFile": "libs/graph/src/test-setup.ts"
-          }
-        }
-      },
-      "schematics": {
-        "@nrwl/angular:component": {
-          "style": "scss"
-        }
-      }
-    },
     "article-list": {
       "projectType": "library",
       "root": "libs/article-list",

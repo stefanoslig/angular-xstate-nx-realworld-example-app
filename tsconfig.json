@@ -30,9 +30,6 @@
       "@angular-xstate-nx-realworld-example-app/home": [
         "libs/home/src/index.ts"
       ],
-      "@angular-xstate-nx-realworld-example-app/graph": [
-        "libs/graph/src/index.ts"
-      ],
       "@angular-xstate-nx-realworld-example-app/article-list": [
         "libs/article-list/src/index.ts"
       ]

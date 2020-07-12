@@ -8,14 +8,12 @@ import { FooterComponent } from './layout/footer/footer.component';
 import { NavbarComponent } from './layout/navbar/navbar.component';
 import { ApiModule } from '@angular-xstate-nx-realworld-example-app/api';
 import { AuthModule } from '@angular-xstate-nx-realworld-example-app/auth';
-import { GraphModule } from '@angular-xstate-nx-realworld-example-app/graph';
 
 @NgModule({
   imports: [
     ApiModule,
     AuthModule,
     BrowserModule,
-    GraphModule,
     BrowserAnimationsModule,
     RouterModule.forRoot(
       [
