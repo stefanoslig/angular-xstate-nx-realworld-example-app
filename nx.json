@@ -6,9 +6,9 @@
       "dependencies": "*",
       "devDependencies": "*"
     },
-    "tsconfig.json": "*",
     "tslint.json": "*",
-    "nx.json": "*"
+    "nx.json": "*",
+    "tsconfig.base.json": "*"
   },
   "tasksRunnerOptions": {
     "default": {
@@ -47,5 +47,8 @@
     "article-list": {
       "tags": []
     }
+  },
+  "affected": {
+    "defaultBase": "master"
   }
 }

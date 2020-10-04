@@ -90,9 +90,7 @@
           "builder": "@nrwl/jest:jest",
           "options": {
             "jestConfig": "apps/conduit/jest.config.js",
-            "tsConfig": "apps/conduit/tsconfig.spec.json",
-            "passWithNoTests": true,
-            "setupFile": "apps/conduit/src/test-setup.ts"
+            "passWithNoTests": true
           }
         }
       }
@@ -144,9 +142,7 @@
           "builder": "@nrwl/jest:jest",
           "options": {
             "jestConfig": "libs/xstate-angular/jest.config.js",
-            "tsConfig": "libs/xstate-angular/tsconfig.spec.json",
-            "passWithNoTests": true,
-            "setupFile": "libs/xstate-angular/src/test-setup.ts"
+            "passWithNoTests": true
           }
         }
       },
@@ -176,9 +172,7 @@
           "builder": "@nrwl/jest:jest",
           "options": {
             "jestConfig": "libs/api/jest.config.js",
-            "tsConfig": "libs/api/tsconfig.spec.json",
-            "passWithNoTests": true,
-            "setupFile": "libs/api/src/test-setup.ts"
+            "passWithNoTests": true
           }
         }
       },
@@ -208,9 +202,7 @@
           "builder": "@nrwl/jest:jest",
           "options": {
             "jestConfig": "libs/auth/jest.config.js",
-            "tsConfig": "libs/auth/tsconfig.spec.json",
-            "passWithNoTests": true,
-            "setupFile": "libs/auth/src/test-setup.ts"
+            "passWithNoTests": true
           }
         }
       },
@@ -240,9 +232,7 @@
           "builder": "@nrwl/jest:jest",
           "options": {
             "jestConfig": "libs/shared/jest.config.js",
-            "tsConfig": "libs/shared/tsconfig.spec.json",
-            "passWithNoTests": true,
-            "setupFile": "libs/shared/src/test-setup.ts"
+            "passWithNoTests": true
           }
         }
       },
@@ -272,9 +262,7 @@
           "builder": "@nrwl/jest:jest",
           "options": {
             "jestConfig": "libs/home/jest.config.js",
-            "tsConfig": "libs/home/tsconfig.spec.json",
-            "passWithNoTests": true,
-            "setupFile": "libs/home/src/test-setup.ts"
+            "passWithNoTests": true
           }
         }
       },
@@ -304,9 +292,7 @@
           "builder": "@nrwl/jest:jest",
           "options": {
             "jestConfig": "libs/article-list/jest.config.js",
-            "tsConfig": "libs/article-list/tsconfig.spec.json",
-            "passWithNoTests": true,
-            "setupFile": "libs/article-list/src/test-setup.ts"
+            "passWithNoTests": true
           }
         }
       },
