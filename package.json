@@ -39,7 +39,8 @@
     "@angular/router": "^10.1.4",
     "@nrwl/angular": "10.3.0",
     "rxjs": "~6.5.5",
-    "xstate": "4.10.0",
+    "xstate": "4.13.0",
+    "@xstate/inspect": "0.1.1",
     "zone.js": "^0.10.2",
     "ts-action": "11.0.0"
   },
