@@ -29,14 +29,14 @@
   },
   "private": true,
   "dependencies": {
-    "@angular/animations": "^9.1.0",
-    "@angular/common": "^9.1.0",
-    "@angular/compiler": "^9.1.0",
-    "@angular/core": "^9.1.0",
-    "@angular/forms": "^9.1.0",
-    "@angular/platform-browser": "^9.1.0",
-    "@angular/platform-browser-dynamic": "^9.1.0",
-    "@angular/router": "^9.1.0",
+    "@angular/animations": "^10.1.4",
+    "@angular/common": "^10.1.4",
+    "@angular/compiler": "^10.1.4",
+    "@angular/core": "^10.1.4",
+    "@angular/forms": "^10.1.4",
+    "@angular/platform-browser": "^10.1.4",
+    "@angular/platform-browser-dynamic": "^10.1.4",
+    "@angular/router": "^10.1.4",
     "@nrwl/angular": "9.4.0",
     "rxjs": "~6.5.4",
     "xstate": "4.10.0",
@@ -44,10 +44,10 @@
     "ts-action": "11.0.0"
   },
   "devDependencies": {
-    "@angular-devkit/build-angular": "0.901.0",
-    "@angular/cli": "9.1.0",
-    "@angular/compiler-cli": "^9.1.0",
-    "@angular/language-service": "^9.1.0",
+    "@angular-devkit/build-angular": "0.1001.4",
+    "@angular/cli": "10.1.4",
+    "@angular/compiler-cli": "^10.1.4",
+    "@angular/language-service": "^10.1.4",
     "@nrwl/cypress": "9.4.0",
     "@nrwl/jest": "9.4.0",
     "@nrwl/workspace": "9.4.0",
@@ -63,8 +63,8 @@
     "prettier": "2.0.4",
     "ts-jest": "25.2.1",
     "ts-node": "~7.0.0",
-    "tslint": "~6.0.0",
-    "typescript": "~3.8.3",
+    "tslint": "~6.1.0",
+    "typescript": "~4.0.3",
     "@xstate/test": "^0.4.0"
   }
 }
