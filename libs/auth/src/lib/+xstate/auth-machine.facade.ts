@@ -11,10 +11,10 @@ export class AuthMachineFacade {
   send = this.authMachineService.authMachine.send;
 
   isSignIn$: Observable<boolean> = this.state$.pipe(
-    map((state) => state.matches('signin'))
+    map((state) => state.matches('signing_in'))
   );
   isSignUp$: Observable<boolean> = this.state$.pipe(
-    map((state) => state.matches('signup'))
+    map((state) => state.matches('signing_up'))
   );
   isAnauthorized$: Observable<boolean> = this.state$.pipe(
     map((state) => state.matches('unauthorized'))

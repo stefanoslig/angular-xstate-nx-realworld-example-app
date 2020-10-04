@@ -4,8 +4,9 @@ export interface AuthMachineSchema {
   states: {
     authorized: {};
     unauthorized: {};
-    signin: {};
-    signup: {};
+    signing_in: {};
+    signing_up: {};
+    errors: {};
     updating: {};
   };
 }

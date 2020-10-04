@@ -2,7 +2,7 @@
   <div class="container page">
     <div class="row">
       <div class="col-md-6 offset-md-3 col-xs-12">
-        <h1 class="text-xs-center">Login</h1>
+        <h1 class="text-xs-center">Sign in</h1>
         <p class="text-xs-center">
           <a [routerLink]="['/register']">Need an account?</a>
         </p>
@@ -10,6 +10,7 @@
           <fieldset>
             <fieldset class="form-group">
               <input
+                data-testid="email-input"
                 autoFocus
                 formControlName="email"
                 placeholder="Email"
@@ -25,6 +26,7 @@
             </fieldset>
             <fieldset class="form-group">
               <input
+                data-testid="password-input"
                 formControlName="password"
                 placeholder="Password"
                 class="form-control form-control-lg"
@@ -35,13 +37,14 @@
               </div>
             </fieldset>
             <button
+              data-testid="submit-button"
               class="btn btn-lg btn-primary pull-xs-right"
               type="submit"
               [disabled]="
                 emailCtr.invalid || passwordCtr.invalid || (isSignIn$ | async)
               "
             >
-              login
+              {{ (isSignIn$ | async) ? 'Loading' : 'Login' }}
             </button>
           </fieldset>
         </form>

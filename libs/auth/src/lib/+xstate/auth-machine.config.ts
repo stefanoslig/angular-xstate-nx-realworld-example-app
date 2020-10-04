@@ -35,7 +35,7 @@ export class AuthMachineService {
     private router: Router
   ) {}
 
-  private ɵauthMachine = Machine<
+  private authMachineConfig = Machine<
     AuthMachineContext,
     AuthMachineSchema,
     AuthMachineEvent
@@ -48,24 +48,22 @@ export class AuthMachineService {
         unauthorized: {
           entry: 'resetUser',
           on: {
-            SIGNIN: 'signin',
-            SIGNUP: 'signup',
+            SIGNIN: 'signing_in',
+            SIGNUP: 'signing_up',
           },
         },
-        signin: {
-          entry: 'resetErrors',
+        signing_in: {
           invoke: { src: 'signIn' },
           on: {
             SIGNIN_SUCCESS: { target: 'authorized', actions: 'assignUser' },
-            SIGNIN_FAILURE: { target: 'unauthorized', actions: 'assignErrors' },
+            SIGNIN_FAILURE: { target: 'errors', actions: 'assignErrors' },
           },
         },
-        signup: {
-          entry: 'resetErrors',
+        signing_up: {
           invoke: { src: 'signUp' },
           on: {
             SIGNUP_SUCCESS: { target: 'authorized', actions: 'assignUser' },
-            SIGNUP_FAILURE: { target: 'unauthorized', actions: 'assignErrors' },
+            SIGNUP_FAILURE: { target: 'errors', actions: 'assignErrors' },
           },
         },
         authorized: {
@@ -74,6 +72,13 @@ export class AuthMachineService {
             UPDATE_USER: 'updating',
             LOGOUT: { target: 'unauthorized', actions: 'logout' },
           },
+        },
+        errors: {
+          on: {
+            SIGNIN: 'signing_in',
+            SIGNUP: 'signing_up',
+          },
+          exit: 'resetErrors',
         },
         updating: {},
       },
@@ -133,7 +138,7 @@ export class AuthMachineService {
 
   rehydratedState = JSON.parse(localStorage.getItem('authState'));
 
-  authMachine = useMachine(this.ɵauthMachine, {
+  authMachine = useMachine(this.authMachineConfig, {
     devTools: !environment.production,
     state: this.rehydratedState,
     persist: { key: 'authState' },

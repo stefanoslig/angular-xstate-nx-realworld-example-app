@@ -35,5 +35,6 @@
       ]
     }
   },
+  "types": ["cypress", "@types/testing-library__cypress"],
   "exclude": ["node_modules", "tmp"]
 }

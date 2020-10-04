@@ -11,7 +11,7 @@ import {
   StateSchema,
 } from 'xstate';
 import { filter, shareReplay, finalize, tap } from 'rxjs/operators';
-import { Observable, from, BehaviorSubject, Subject } from 'rxjs';
+import { Observable, from } from 'rxjs';
 
 export type InterpretedService<
   TContext,
@@ -77,7 +77,7 @@ export function useMachine<
     state ? State.create(state) : undefined
   );
 
-  if (!!persist && persist.key) {
+  if (persist?.key) {
     const state$ = from(service).pipe(
       tap((state) => localStorage.setItem(persist.key, JSON.stringify(state))),
       shareReplay(1)
