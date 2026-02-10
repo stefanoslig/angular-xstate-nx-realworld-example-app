@@ -45,8 +45,8 @@
     "ts-action": "11.0.0"
   },
   "devDependencies": {
-    "@angular-devkit/build-angular": "0.1001.4",
-    "@angular/cli": "10.1.4",
+    "@angular-devkit/build-angular": "21.1.2",
+    "@angular/cli": "21.1.2",
     "@angular/compiler-cli": "^10.1.4",
     "@angular/language-service": "^10.1.4",
     "@nrwl/cypress": "10.3.0",
